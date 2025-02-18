@@ -23,9 +23,9 @@ COPY --from=build-env /src/barketplace_server/cmd/marketplace_server/marketplace
 #RUN apt-get upgrade -y
 #RUN apt-get install -y supervisor
 
-RUN mkdir -p /var/run/sshd
+#RUN mkdir -p /var/run/sshd
 #RUN mkdir -p /var/log/supervisor
-RUN mkdir -p /app/log
+#RUN mkdir -p /app/log
 
 #COPY --from=build-env /src/marketplace_server/linux/supervisor.conf /etc/supervisor/conf.d/supervisord.conf
 #COPY --from=build-env /src/marketplace_server/linux/start-container /usr/local/bin/start-container

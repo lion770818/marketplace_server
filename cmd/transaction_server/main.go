@@ -17,7 +17,18 @@ func GerData(c *gin.Context) {
 	c.Data(http.StatusOK, "text/plain", str) // 指定contentType為 text/plain，就是傳輸格式為純文字啦～
 }
 
+var (
+	version   string = "v0.0.1"
+	buildTime string
+	commitId  string
+)
+
 func main() {
+
+	// 顯示版本
+	fmt.Println("transactio-server start version:", version)
+	fmt.Println("transactio-server buildTime:", buildTime)
+	fmt.Println("transactio-server commitId:", commitId)
 
 	// 初始化配置
 	cfg := &config.Config{}

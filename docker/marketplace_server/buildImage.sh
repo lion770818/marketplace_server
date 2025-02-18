@@ -8,7 +8,32 @@
 
 # 交叉編譯 支援 linux / mac
 #docker buildx build --push -t close0818/marketplace_server:v1 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../
-docker buildx build --push -t close0818/marketplace_server:v2 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../
+docker buildx build --push -t close0818/marketplace_server:V1 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../
+
+
+docker buildx build --push -t 192.168.100.69:9003/test/marketplace_server:V1 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../
+docker buildx build --push -t 192.168.100.69:9003/test/marketplace_server:V2 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../
+docker buildx build --push -t 192.168.100.69/test/marketplace_server:V2 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../
+
+docker buildx build 192.168.100.69:9003/test/marketplace_server:V1 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../
+
+
+# habor 專案 ok
+docker build --push  -t 192.168.100.69:9003/test/marketplace_server:v1 --platform linux/amd64 -f ./Dockerfile  ../../../
+docker build --push  -t 192.168.100.69:9003/test/marketplace_server:v3 --platform linux/amd64 -f ./Dockerfile  ../../../
+docker build --push  -t 192.168.100.69:9003/test/marketplace_server:v4 --platform linux/arm64 -f ./Dockerfile  ../../../
+
+
+docker buildx build  -t 192.168.100.69:9003/test/marketplace_server:v2 --platform linux/amd64,linux/arm64  -f ./Dockerfile  ../../../
+docker buildx build --push  -t 192.168.100.69:9003/test/marketplace_server:v3 --platform linux/arm64 -f ./Dockerfile  ../../../
+
+docker buildx build --push  -t 192.168.100.69:9003/test/marketplace_server:v2 --platform linux/amd64 -f ./Dockerfile  ../../../
+
+
+docker buildx build --load -t 192.168.100.69:9003/test/marketplace_server:v2 --platform linux/amd64,linux/arm64 -f ./Dockerfile ../../../
+
+
+docker buildx build --push -t 22216480/marketplace_server:v3 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../
 
 
 #docker buildx build -t liuleo/marketplace_server:v1 --platform linux/amd64,linux/arm64 -f ./Dockerfile  ../../../

@@ -53,6 +53,7 @@ func (c *Consumer) Start() error {
 }
 
 func (c *Consumer) Stop() {
+	logs.Debugf("rabbitmq consumer - stop")
 	close(c.quit)
 
 	if !c.conn.IsClosed() {

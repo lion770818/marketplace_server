@@ -10,9 +10,28 @@ import (
 	application_server "marketplace_server/internal/servers/application_layer"
 	"marketplace_server/internal/servers/web"
 	"os"
+
+	"github.com/joho/godotenv"
+)
+
+var (
+	version   string = "v0.0.7"
+	buildTime string
+	commitId  string
 )
 
 func main() {
+
+	// 顯示版本
+	fmt.Println("markplace-server start version:", version)
+	fmt.Println("markplace-server buildTime:", buildTime)
+	fmt.Println("markplace-server commitId:", commitId)
+
+	// 載入本地 .env 檔案
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("Error loading .env file err=", err)
+	}
 
 	cfg := &config.Config{}
 	env_flag := os.Getenv("env_flag")

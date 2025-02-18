@@ -41,6 +41,7 @@ func (s *Servers) AsyncStart() {
 }
 
 func (s *Servers) Stop() {
+	logs.Debugf("Servers Stop")
 	for _, server := range s.Servers {
 		server.Stop()
 	}

@@ -2,13 +2,13 @@ version: "3.8"
 
 services:
   marketplace_server:
-    image: close0818/marketplace_server:v4
+    image: 192.168.100.69:9003/test/marketplace_server:v1
     restart: always
     container_name: marketplace_server
     volumes:
       - ./log:/app/log
     environment:
-      - env_flag=1 #${env_flag}
+      - env_flag=${env_flag}
       - web_mode=${web_mode}
       - web_port=${web_port}
 
