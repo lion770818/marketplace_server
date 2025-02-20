@@ -59,11 +59,12 @@ func (u *User) Receive(amount decimal.Decimal) error {
 	return nil
 }
 
-func (u *User) ToLoginResp(token string) *S2C_Login {
+func (u *User) ToLoginResp(token string, amount decimal.Decimal) *S2C_Login {
 	return &S2C_Login{
 		UserID:   u.UserID,
 		Username: u.Username,
 		Token:    token,
+		Amount:   amount,
 	}
 }
 

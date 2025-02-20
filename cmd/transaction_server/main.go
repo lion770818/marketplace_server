@@ -9,6 +9,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 // test
@@ -29,6 +30,12 @@ func main() {
 	fmt.Println("transactio-server start version:", version)
 	fmt.Println("transactio-server buildTime:", buildTime)
 	fmt.Println("transactio-server commitId:", commitId)
+
+	// 載入本地 .env 檔案
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("Error loading .env file err=", err)
+	}
 
 	// 初始化配置
 	cfg := &config.Config{}

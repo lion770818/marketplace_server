@@ -89,6 +89,8 @@ func NewRepositories(cfg *config.Config) *RepositoriesManager {
 			logs.Errorf("rabbitmqx init err:%v", err)
 			return nil
 		}
+	} else {
+		logs.Debugf("disenable rabbitMq...")
 	}
 
 	transactionRepo := Infrastructure_bill.NewMysqlTransactionRepo(db)

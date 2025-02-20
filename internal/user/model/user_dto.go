@@ -41,9 +41,10 @@ func (c *C2S_Login) Verify() error {
 
 // S2C_Login Web 登入回應
 type S2C_Login struct {
-	UserID   int64  `json:"user_id"`
-	Username string `json:"username"`
-	Token    string `json:"token"`
+	UserID   int64           `json:"user_id"`
+	Username string          `json:"username"`
+	Token    string          `json:"token"`
+	Amount   decimal.Decimal `json:"amount"`
 }
 
 // 獲得用戶資訊

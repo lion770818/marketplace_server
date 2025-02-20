@@ -12,30 +12,36 @@ func NewEnvConfig() *Config {
 
 	c := &Config{}
 
+	rabbitmq_enable, err := strconv.ParseBool(os.Getenv("rabbitmq_enable"))
+	if err != nil {
+		log.Fatalf("rabbitmq_enable:%v, err=%v", os.Getenv("rabbitmq_enable"), err)
+		return nil
+	}
+
 	connectNum, err := strconv.Atoi(os.Getenv("rabbitmq_connectNum"))
 	if err != nil {
-		log.Fatalf("connectNum rabbitmq_channelNum:%v, err=%v", os.Getenv("rabbitmq_channelNum"), err)
+		log.Fatalf("rabbitmq_channelNum:%v, err=%v", os.Getenv("rabbitmq_channelNum"), err)
 		return nil
 	}
 	channelNum, err := strconv.Atoi(os.Getenv("rabbitmq_channelNum"))
 	if err != nil {
-		log.Fatalf("channelNum rabbitmq_channelNum:%v, err=%v", os.Getenv("rabbitmq_channelNum"), err)
+		log.Fatalf("rabbitmq_channelNum:%v, err=%v", os.Getenv("rabbitmq_channelNum"), err)
 		return nil
 	}
 
 	max_size, err := strconv.Atoi(os.Getenv("log_max_size"))
 	if err != nil {
-		log.Fatalf("channelNum rabbitmq_channelNum:%v, err=%v", os.Getenv("log_max_size"), err)
+		log.Fatalf("log_max_size:%v, err=%v", os.Getenv("log_max_size"), err)
 		return nil
 	}
 	max_age, err := strconv.Atoi(os.Getenv("log_max_age"))
 	if err != nil {
-		log.Fatalf("max_age log_max_age:%v, err=%v", os.Getenv("log_max_age"), err)
+		log.Fatalf("log_max_age:%v, err=%v", os.Getenv("log_max_age"), err)
 		return nil
 	}
 	max_backups, err := strconv.Atoi(os.Getenv("log_max_backups"))
 	if err != nil {
-		log.Fatalf("max_backups max_backups:%v, err=%v", os.Getenv("log_max_backups"), err)
+		log.Fatalf("log_max_backups:%v, err=%v", os.Getenv("log_max_backups"), err)
 		return nil
 	}
 
@@ -64,7 +70,7 @@ func NewEnvConfig() *Config {
 			Password: os.Getenv("auth_password"),
 		},
 		RabbitMq: RabbitMq{
-			Enable:     c.GetBool("rabbitmq_flag"),
+			Enable:     rabbitmq_enable,
 			Host:       os.Getenv("rabbitmq_host"),
 			Port:       os.Getenv("rabbitmq_port"),
 			User:       os.Getenv("rabbitmq_user"),
@@ -101,7 +107,7 @@ func NewEnvConfig() *Config {
 }
 
 func (c *Config) GetString(name string) string {
-	return os.Getenv("name")
+	return os.Getenv(name)
 }
 
 func (c *Config) GetBool(name string) bool {

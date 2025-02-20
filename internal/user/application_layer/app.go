@@ -91,7 +91,7 @@ func (u *UserApp) Login(login *model.LoginParams) (*model.S2C_Login, error) {
 	}
 	logs.Debugf("auth:%+v", auth)
 
-	return user.ToLoginResp(token), nil
+	return user.ToLoginResp(token, user.Amount), nil
 }
 
 // GetAuthInfo 從 token 中 取得用戶資訊
@@ -140,7 +140,7 @@ func (u *UserApp) Register(register *model.RegisterParams) (*model.S2C_Login, er
 		return nil, err
 	}
 
-	return user.ToLoginResp(token), nil
+	return user.ToLoginResp(token, user.Amount), nil
 }
 
 // 買商品 / 賣商品
@@ -173,7 +173,7 @@ func (u *UserApp) TransactionProduct(transactionParams *model.ProductTransaction
 	if err != nil {
 		logs.Errorf("productName:%v, json:%+v, err:%v",
 			transactionParams.ProductName, dataMap[transactionParams.ProductName], err)
-		return nil, err
+		return nil, fmt.Errorf("productName:%s, meg:%v", transactionParams.ProductName, err.Error())
 	}
 
 	// 取得用戶緩存
